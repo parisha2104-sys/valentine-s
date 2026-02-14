@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Will you be my Valentine?</title>
+  <style>
+    body {
+      background: url('images/background.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px auto;
+      max-width: 900px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .button {
+      padding: 15px 30px;
+      font-size: 20px;
+      margin: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: pink;
+      color: white;
+      transition: transform 0.2s;
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+    #yesPage, #noPage {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Will you be my Valentine?</h1>
+<button class="button" onclick="showYes()">Yes</button>
+<button class="button" onclick="showNo()">No</button>
+
+<div id="yesPage">
+  <h2>Yay! ❤️</h2>
+  <div class="gallery">
+    <img src="images/img1.jpeg">
+    <img src="images/img2.jpeg">
+    <img src="images/img3.jpeg">
+    <img src="images/img4.jpeg">
+    <img src="images/img5.jpeg">
+    <img src="images/img6.jpeg">
+    <img src="images/img7.jpeg">
+    <img src="images/img8.jpeg">
+    <img src="images/img9.jpeg">
+  </div>
+</div>
+
+<div id="noPage">
+  <h2>Oh 😢 maybe next time!</h2>
+</div>
+
+<script>
+function showYes() {
+  document.getElementById('yesPage').style.display = 'block';
+  document.getElementById('noPage').style.display = 'none';
+}
+function showNo() {
+  document.getElementById('noPage').style.display = 'block';
+  document.getElementById('yesPage').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
