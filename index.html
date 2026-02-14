@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Will you be my Valentine?</title>
+  <title>Will You Be My Valentine?</title>
   <style>
     body {
-      background: url('images/background.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      color: white;
+      background: linear-gradient(to bottom right, #ffb6c1, #ff69b4);
+      overflow-x: hidden;
     }
+
+    h1, h2 {
+      color: white;
+      text-shadow: 2px 2px 8px #ff69b4;
+    }
+
+    .button {
+      padding: 15px 30px;
+      font-size: 20px;
+      margin: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 15px;
+      background: pink;
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #fff;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -17,64 +40,93 @@
       margin: 20px auto;
       max-width: 900px;
     }
+
     .gallery img {
       width: 100%;
       border-radius: 10px;
+      transition: transform 0.3s;
     }
-    .button {
-      padding: 15px 30px;
-      font-size: 20px;
-      margin: 20px;
-      cursor: pointer;
-      border: none;
-      border-radius: 10px;
-      background: pink;
-      color: white;
-      transition: transform 0.2s;
+
+    .gallery img:hover {
+      transform: scale(1.05);
     }
-    .button:hover {
-      transform: scale(1.1);
-    }
+
     #yesPage, #noPage {
       display: none;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      color: #ff69b4;
+      animation: float 4s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity:1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity:0; }
     }
   </style>
 </head>
 <body>
 
-<h1>Will you be my Valentine?</h1>
-<button class="button" onclick="showYes()">Yes</button>
-<button class="button" onclick="showNo()">No</button>
+<h1>Will You Be My Valentine?</h1>
+<button class="button" onclick="showYes()">Yes ❤️</button>
+<button class="button" onclick="showNo()">No 😢</button>
 
 <div id="yesPage">
   <h2>Yay! ❤️</h2>
   <div class="gallery">
-  <img src="images/img1.jpeg.jpeg">
-  <img src="images/img2.jpeg.jpeg">
-  <img src="images/img3.jpeg.jpeg">
-  <img src="images/img4.jpeg.jpeg">
-  <img src="images/img5.jpeg.jpeg">
-  <img src="images/img6.jpeg.jpeg">
-  <img src="images/img7.jpeg.jpeg">
-  <img src="images/img8.jpeg.jpeg">
-  <img src="images/img9.jpeg.jpeg">
-</div>
-
-
+    <img src="images/img1.jpeg.jpeg">
+    <img src="images/img2.jpeg.jpeg">
+    <img src="images/img3.jpeg.jpeg">
+    <img src="images/img4.jpeg.jpeg">
+    <img src="images/img5.jpeg.jpeg">
+    <img src="images/img6.jpeg.jpeg">
+    <img src="images/img7.jpeg.jpeg">
+    <img src="images/img8.jpeg.jpeg">
+    <img src="images/img9.jpeg.jpeg">
+  </div>
 </div>
 
 <div id="noPage">
   <h2>Oh 😢 maybe next time!</h2>
 </div>
 
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="images/love-music.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
+  startHearts();
 }
+
 function showNo() {
   document.getElementById('noPage').style.display = 'block';
   document.getElementById('yesPage').style.display = 'none';
+}
+
+/* Floating hearts effect */
+function startHearts() {
+  for(let i=0;i<50;i++){
+    createHeart();
+  }
+}
+
+function createHeart(){
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.animationDuration = (3 + Math.random()*3) + 's';
+  heart.innerHTML = '❤️';
+  document.body.appendChild(heart);
+  setTimeout(()=>{ heart.remove() }, 4000);
 }
 </script>
 
