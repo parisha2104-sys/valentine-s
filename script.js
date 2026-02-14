@@ -10,9 +10,13 @@ function showYes() {
 
   // Show 3rd slide (vintage letter) after 2 seconds
   setTimeout(() => {
-    document.getElementById('slide3').style.display = 'block';
-    document.getElementById('slide3').scrollIntoView({behavior: "smooth"});
+    const slide3 = document.getElementById('slide3');
+    slide3.style.display = 'block';
+    slide3.classList.add('fade-slide');
+    slide3.scrollIntoView({behavior:"smooth"});
   }, 2000);
+
+  createFloatingHearts(15);
 }
 
 // ================= SHOW NO =================
@@ -51,3 +55,15 @@ document.body.addEventListener('click', function playOnce() {
   music.play().catch(()=>console.log("Autoplay blocked"));
   document.body.removeEventListener('click', playOnce);
 });
+
+// ================= FLOATING HEARTS =================
+function createFloatingHearts(count){
+  for(let i=0;i<count;i++){
+    const heart = document.createElement('div');
+    heart.className='heart';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.animationDuration=(4+Math.random()*4)+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(), 6000);
+  }
+}
