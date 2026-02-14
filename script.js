@@ -1,4 +1,4 @@
-// Show Yes Page
+// ================= SHOW YES =================
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
@@ -15,13 +15,13 @@ function showYes() {
   }, 2000);
 }
 
-// Show No Page
+// ================= SHOW NO =================
 function showNo() {
   document.getElementById('noPage').style.display = 'block';
   document.getElementById('yesPage').style.display = 'none';
 }
 
-// Typing Quotes
+// ================= TYPING QUOTES =================
 function startTypingQuotes() {
   const quotes = document.querySelectorAll('.quote');
   quotes.forEach(q => {
@@ -36,7 +36,7 @@ function startTypingQuotes() {
   });
 }
 
-// Lightbox
+// ================= LIGHTBOX =================
 function openLightbox(img) {
   document.getElementById('lightbox').style.display = 'flex';
   document.getElementById('lightbox-img').src = img.src;
@@ -45,7 +45,7 @@ function closeLightbox() {
   document.getElementById('lightbox').style.display = 'none';
 }
 
-// Auto-play music on first click anywhere
+// ================= AUTOPLAY MUSIC ON FIRST CLICK =================
 document.body.addEventListener('click', function playOnce() {
   const music = document.getElementById('bgMusic');
   music.play().catch(()=>console.log("Autoplay blocked"));
