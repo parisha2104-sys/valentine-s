@@ -1,24 +1,25 @@
+let musicPlayed = false;
+
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
 
-  // Play background music on first click
-  const music = document.getElementById('bgMusic');
-  music.play().catch(() => {
-    console.log("Autoplay blocked, user interaction required.");
-  });
+  // Play music on first click
+  if(!musicPlayed){
+    const music = document.getElementById('bgMusic');
+    music.play().catch(() => console.log("Click again to start music"));
+    musicPlayed = true;
+  }
 
   startHearts();
   startConfetti();
 }
-
 
 function showNo() {
   document.getElementById('noPage').style.display = 'block';
   document.getElementById('yesPage').style.display = 'none';
 }
 
-/* Hearts */
 function startHearts() {
   for(let i=0;i<50;i++) createHeart();
 }
@@ -33,7 +34,6 @@ function createHeart(){
 }
 setInterval(createHeart,500);
 
-/* Confetti */
 function startConfetti(){
   for(let i=0;i<100;i++) createConfetti();
   setInterval(createConfetti,300);
