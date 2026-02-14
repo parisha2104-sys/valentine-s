@@ -9,8 +9,8 @@ const notes = [
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
-  startHearts();
   showNote();
+  startHearts();
   startConfetti();
 }
 
@@ -19,11 +19,14 @@ function showNo() {
   document.getElementById('yesPage').style.display = 'none';
 }
 
-/* Floating hearts */
+function showNote(){
+  const note = notes[Math.floor(Math.random()*notes.length)];
+  document.getElementById('note').innerText = note;
+}
+
+/* Hearts */
 function startHearts() {
-  for(let i=0;i<50;i++){
-    createHeart();
-  }
+  for(let i=0;i<50;i++) createHeart();
 }
 function createHeart(){
   const heart = document.createElement('div');
@@ -36,20 +39,11 @@ function createHeart(){
 }
 setInterval(createHeart,500);
 
-/* Sweet notes */
-function showNote(){
-  const note = notes[Math.floor(Math.random()*notes.length)];
-  document.getElementById('note').innerText = note;
-}
-
 /* Confetti */
 function startConfetti(){
-  for(let i=0;i<100;i++){
-    createConfetti();
-  }
+  for(let i=0;i<100;i++) createConfetti();
   setInterval(createConfetti,300);
 }
-
 function createConfetti(){
   const conf = document.createElement('div');
   conf.className='confetti';
