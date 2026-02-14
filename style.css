@@ -76,13 +76,13 @@ h1, h2, #note {
   100% { transform: translateY(-10vh) rotate(360deg); opacity:0; }
 }
 
-/* Confetti pieces */
+/* Confetti */
 .confetti {
   position: fixed;
   width: 10px;
   height: 10px;
-  background: pink;
   top: -10px;
   opacity: 0.8;
   z-index: 9999;
+  border-radius:50%;
 }
