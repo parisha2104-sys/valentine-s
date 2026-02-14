@@ -5,17 +5,14 @@ function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
 
-  // Play music once on first interaction
-  if(!musicPlayed){
-    const music = document.getElementById('bgMusic');
-    music.play().catch(() => console.log("Click again to start music"));
-    musicPlayed = true;
-  }
-
+  const music = document.getElementById('bgMusic');
+  music.play().catch(() => console.log("Autoplay blocked, click Yes"));
+  
   startHearts();
   startConfetti();
   startTypingQuotes();
 }
+
 
 // Show No Page
 function showNo() {
