@@ -1,3 +1,13 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: url('images/dreamy-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
 <div id="yesPage" class="fade-in" style="display:none;">
   <h2 class="fade-in">Yay! ❤️</h2>
 
