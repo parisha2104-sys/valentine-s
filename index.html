@@ -11,10 +11,10 @@
 <div class="button-container fade-in">
   <button class="button" onclick="showYes()">Yes ❤️</button>
   <button class="button" onclick="showNo()">No 😢</button>
-  
 </div>
 
-<div id="yesPage" class="fade-in">
+<!-- YES PAGE -->
+<div id="yesPage" class="fade-in" style="display:none;">
   <h2 class="fade-in">Yay! ❤️</h2>
 
   <div class="gallery">
@@ -41,9 +41,25 @@
     <img src="images/img9.jpeg.jpeg" onclick="openLightbox(this)">
   </div>
   <p class="quote" data-text="You + Me = ❤️ Forever!"></p>
+
+  <!-- 3rd Slide: Vintage Love Letter -->
+  <div id="slide3" class="fade-in" style="display:none;">
+    <div class="vintage-letter">
+      <h2>To My Beloved ❤️</h2>
+      <p>
+        My dearest, <br><br>
+        Every moment with you feels like a dream. <br>
+        Your smile lights up my world, and your love is my greatest treasure. <br><br>
+        Forever yours, <br>
+        <strong>– Parisha 💌</strong>
+      </p>
+      <img src="images/seal.png" alt="Love Seal" class="seal">
+    </div>
+  </div>
 </div>
 
-<div id="noPage" class="fade-in">
+<!-- NO PAGE -->
+<div id="noPage" class="fade-in" style="display:none;">
   <h2>Oh 😢 maybe next time!</h2>
 </div>
 
@@ -52,7 +68,6 @@
   <source src="images/love-music.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
-
 
 <!-- Lightbox for image popup -->
 <div id="lightbox" onclick="closeLightbox()">
