@@ -2,7 +2,108 @@
 <html>
 <head>
   <title>Will You Be My Valentine?</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ======================= BODY + BACKGROUND ======================= */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: url('images/dreamy-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1, h2 {
+      margin: 20px 0;
+    }
+
+    /* ======================= BUTTON ======================= */
+    .button-container { margin: 20px; }
+    .button {
+      padding: 12px 25px;
+      margin: 10px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      box-shadow: 0 0 15px #ff1493;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff1493;
+    }
+
+    /* ======================= GALLERY ======================= */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .gallery img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+
+    /* ======================= QUOTES ======================= */
+    .quote {
+      font-size: 20px;
+      margin: 15px 0;
+      min-height: 40px;
+      color: #000;
+    }
+
+    /* ======================= VINTAGE LETTER (3RD SLIDE) ======================= */
+    .vintage-letter {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 40px;
+      background: rgba(255, 248, 220, 0.9); /* parchment */
+      border: 2px solid #d2b48c;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      font-family: 'Georgia', serif;
+      color: #4b3621;
+      line-height: 1.8;
+      position: relative;
+    }
+    .vintage-letter h2 {
+      text-align: center;
+      color: #b22222;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .vintage-letter .seal {
+      display: block;
+      width: 80px;
+      margin: 20px auto 0 auto;
+    }
+
+    /* ======================= FADE-IN ======================= */
+    .fade-in { animation: fadeIn 2s; }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+    /* ======================= LIGHTBOX ======================= */
+    #lightbox {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width: 100%; height:100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #lightbox img { max-width: 80%; max-height: 80%; border-radius: 15px; }
+
+  </style>
 </head>
 <body>
 
@@ -13,7 +114,7 @@
   <button class="button" onclick="showNo()">No 😢</button>
 </div>
 
-<!-- YES PAGE -->
+<!-- ======================= YES PAGE ======================= -->
 <div id="yesPage" class="fade-in" style="display:none;">
   <h2 class="fade-in">Yay! ❤️</h2>
 
@@ -42,7 +143,7 @@
   </div>
   <p class="quote" data-text="You + Me = ❤️ Forever!"></p>
 
-  <!-- 3rd Slide: Vintage Love Letter -->
+  <!-- ======================= 3rd Slide: Vintage Letter ======================= -->
   <div id="slide3" class="fade-in" style="display:none;">
     <div class="vintage-letter">
       <h2>To My Beloved ❤️</h2>
@@ -58,22 +159,77 @@
   </div>
 </div>
 
-<!-- NO PAGE -->
+<!-- ======================= NO PAGE ======================= -->
 <div id="noPage" class="fade-in" style="display:none;">
   <h2>Oh 😢 maybe next time!</h2>
 </div>
 
-<!-- Music -->
+<!-- ======================= MUSIC ======================= -->
 <audio id="bgMusic" loop>
   <source src="images/love-music.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
-<!-- Lightbox for image popup -->
+<!-- ======================= LIGHTBOX ======================= -->
 <div id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img">
 </div>
 
-<script src="script.js"></script>
+<script>
+  // ======================= SHOW YES =======================
+  function showYes() {
+    document.getElementById('yesPage').style.display = 'block';
+    document.getElementById('noPage').style.display = 'none';
+
+    const music = document.getElementById('bgMusic');
+    music.play().catch(() => console.log("Autoplay blocked"));
+
+    startTypingQuotes();
+
+    // Show 3rd slide (vintage letter) after 2 sec
+    setTimeout(() => {
+      document.getElementById('slide3').style.display = 'block';
+      document.getElementById('slide3').scrollIntoView({behavior: "smooth"});
+    }, 2000);
+  }
+
+  // ======================= SHOW NO =======================
+  function showNo() {
+    document.getElementById('noPage').style.display = 'block';
+    document.getElementById('yesPage').style.display = 'none';
+  }
+
+  // ======================= TYPING QUOTES =======================
+  function startTypingQuotes() {
+    const quotes = document.querySelectorAll('.quote');
+    quotes.forEach(q => {
+      const text = q.getAttribute('data-text');
+      let index = 0;
+      q.textContent = '';
+      const interval = setInterval(() => {
+        q.textContent += text[index];
+        index++;
+        if(index >= text.length) clearInterval(interval);
+      }, 50);
+    });
+  }
+
+  // ======================= LIGHTBOX =======================
+  function openLightbox(img) {
+    document.getElementById('lightbox').style.display = 'flex';
+    document.getElementById('lightbox-img').src = img.src;
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+
+  // ======================= AUTOPLAY MUSIC ON FIRST CLICK =======================
+  document.body.addEventListener('click', function playOnce() {
+    const music = document.getElementById('bgMusic');
+    music.play().catch(()=>console.log("Autoplay blocked"));
+    document.body.removeEventListener('click', playOnce);
+  });
+
+</script>
 </body>
 </html>
