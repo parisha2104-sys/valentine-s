@@ -9,6 +9,30 @@ body {
   overflow-x: hidden;
 }
 h1, h2 { margin: 20px 0; }
+/* ================= FLOATING HEARTS ================= */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: float 6s linear infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) scale(0.5) rotate(0deg);}
+  100% { transform: translateY(-100vh) scale(1.2) rotate(360deg);}
+}
 
 /* ================= BUTTON ================= */
 .button-container { margin: 20px; }
