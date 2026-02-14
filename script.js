@@ -1,10 +1,11 @@
 let musicPlayed = false;
 
+// Show Yes Page
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
 
-  // Play music on first click
+  // Play music once on first interaction
   if(!musicPlayed){
     const music = document.getElementById('bgMusic');
     music.play().catch(() => console.log("Click again to start music"));
@@ -13,13 +14,38 @@ function showYes() {
 
   startHearts();
   startConfetti();
+  startTypingQuotes();
 }
 
+// Show No Page
 function showNo() {
   document.getElementById('noPage').style.display = 'block';
   document.getElementById('yesPage').style.display = 'none';
 }
 
+// Toggle Music
+function toggleMusic(){
+  const music = document.getElementById('bgMusic');
+  if(music.paused) music.play();
+  else music.pause();
+}
+
+// Typing animation for quotes
+function startTypingQuotes(){
+  const quotes = document.querySelectorAll('.quote');
+  quotes.forEach(quote=>{
+    const text = quote.getAttribute('data-text');
+    let index = 0;
+    quote.innerHTML = '';
+    const interval = setInterval(()=>{
+      quote.innerHTML += text[index];
+      index++;
+      if(index >= text.length) clearInterval(interval);
+    }, 60);
+  });
+}
+
+/* Hearts */
 function startHearts() {
   for(let i=0;i<50;i++) createHeart();
 }
@@ -34,6 +60,7 @@ function createHeart(){
 }
 setInterval(createHeart,500);
 
+/* Confetti */
 function startConfetti(){
   for(let i=0;i<100;i++) createConfetti();
   setInterval(createConfetti,300);
@@ -54,3 +81,24 @@ function createConfetti(){
     }
   },20);
 }
+
+/* Lightbox Image Popup */
+function openLightbox(img){
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  lbImg.src = img.src;
+  lightbox.style.display = 'flex';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+/* Cursor heart trail */
+document.addEventListener('mousemove', e=>{
+  const trail = document.createElement('div');
+  trail.className = 'heart';
+  trail.style.left = e.clientX + 'px';
+  trail.style.top = e.clientY + 'px';
+  document.body.appendChild(trail);
+  setTimeout(()=>trail.remove(), 1000);
+});
