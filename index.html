@@ -3,19 +3,34 @@
 <head>
   <title>Will You Be My Valentine?</title>
   <style>
+    /* --------- Body & Background --------- */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
       text-align: center;
-      background: linear-gradient(to bottom right, #ffb6c1, #ff69b4);
+      background: url('images/background.jpeg') no-repeat center center fixed;
+      background-size: cover;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Romantic overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,182,193,0.3);
+      top: 0; left: 0;
+      pointer-events: none;
     }
 
     h1, h2 {
       color: white;
-      text-shadow: 2px 2px 8px #ff69b4;
+      text-shadow: 2px 2px 10px #ff69b4;
     }
 
+    /* Buttons */
     .button {
       padding: 15px 30px;
       font-size: 20px;
@@ -30,9 +45,10 @@
 
     .button:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px #fff;
+      box-shadow: 0 0 30px #fff;
     }
 
+    /* Image Grid */
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -44,24 +60,27 @@
     .gallery img {
       width: 100%;
       border-radius: 10px;
-      transition: transform 0.3s;
+      transition: transform 0.5s, filter 0.5s;
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.08) translateY(-5px);
+      filter: brightness(1.2);
     }
 
+    /* Pages */
     #yesPage, #noPage {
       display: none;
     }
 
-    /* Floating hearts */
+    /* Floating Hearts */
     .heart {
       position: fixed;
       font-size: 24px;
       color: #ff69b4;
-      animation: float 4s linear infinite;
+      animation: float 5s linear infinite;
       pointer-events: none;
+      z-index: 1000;
     }
 
     @keyframes float {
@@ -76,6 +95,7 @@
 <button class="button" onclick="showYes()">Yes ❤️</button>
 <button class="button" onclick="showNo()">No 😢</button>
 
+<!-- YES Page -->
 <div id="yesPage">
   <h2>Yay! ❤️</h2>
   <div class="gallery">
@@ -91,6 +111,7 @@
   </div>
 </div>
 
+<!-- NO Page -->
 <div id="noPage">
   <h2>Oh 😢 maybe next time!</h2>
 </div>
@@ -101,6 +122,7 @@
 </audio>
 
 <script>
+/* --------- Show Pages --------- */
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
@@ -112,7 +134,7 @@ function showNo() {
   document.getElementById('yesPage').style.display = 'none';
 }
 
-/* Floating hearts effect */
+/* --------- Floating Hearts --------- */
 function startHearts() {
   for(let i=0;i<50;i++){
     createHeart();
@@ -126,8 +148,11 @@ function createHeart(){
   heart.style.animationDuration = (3 + Math.random()*3) + 's';
   heart.innerHTML = '❤️';
   document.body.appendChild(heart);
-  setTimeout(()=>{ heart.remove() }, 4000);
+  setTimeout(()=>{ heart.remove() }, 5000);
 }
+
+/* Continuous floating hearts in background */
+setInterval(createHeart, 500);
 </script>
 
 </body>
