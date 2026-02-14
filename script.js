@@ -1,9 +1,17 @@
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
+
+  // Play background music on first click
+  const music = document.getElementById('bgMusic');
+  music.play().catch(() => {
+    console.log("Autoplay blocked, user interaction required.");
+  });
+
   startHearts();
   startConfetti();
 }
+
 
 function showNo() {
   document.getElementById('noPage').style.display = 'block';
