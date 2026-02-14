@@ -1,15 +1,6 @@
-const notes = [
-  "You make my heart smile every day! 💖",
-  "Life is better with you by my side! 🌸",
-  "You + Me = ❤️ Forever!",
-  "Every moment with you is magical ✨",
-  "My favorite thing is your smile 😍"
-];
-
 function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
-  showNote();
   startHearts();
   startConfetti();
 }
@@ -17,11 +8,6 @@ function showYes() {
 function showNo() {
   document.getElementById('noPage').style.display = 'block';
   document.getElementById('yesPage').style.display = 'none';
-}
-
-function showNote(){
-  const note = notes[Math.floor(Math.random()*notes.length)];
-  document.getElementById('note').innerText = note;
 }
 
 /* Hearts */
