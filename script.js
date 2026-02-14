@@ -11,13 +11,14 @@ function showYes() {
   document.getElementById('yesPage').style.display = 'block';
   document.getElementById('noPage').style.display = 'none';
 
- const music = document.getElementById('bgMusic');
-  music.play().catch(()=>console.log("Autoplay blocked"));
-  
+  const music = document.getElementById('bgMusic');
+  music.play().catch(() => console.log("Autoplay blocked")); // music will start after Yes click
+
   startHearts();
   startConfetti();
   startTypingQuotes();
 }
+
 
 
 // Show No Page
