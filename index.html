@@ -6,48 +6,57 @@
 </head>
 <body>
 
-<h1>Will You Be My Valentine?</h1>
-<button class="button" onclick="showYes()">Yes ❤️</button>
-<button class="button" onclick="showNo()">No 😢</button>
+<h1 class="fade-in">Will You Be My Valentine?</h1>
 
-<div id="yesPage">
-  <h2>Yay! ❤️</h2>
-
-  <div class="gallery">
-    <img src="images/img1.jpeg.jpeg">
-    <img src="images/img2.jpeg.jpeg">
-  </div>
-  <p class="quote">You make my heart smile every day! 💖</p>
-
-  <div class="gallery">
-    <img src="images/img3.jpeg.jpeg">
-    <img src="images/img4.jpeg.jpeg">
-  </div>
-  <p class="quote">Life is better with you by my side! 🌸</p>
-
-  <div class="gallery">
-    <img src="images/img5.jpeg.jpeg">
-    <img src="images/img6.jpeg.jpeg">
-  </div>
-  <p class="quote">Every moment with you is magical ✨</p>
-
-  <div class="gallery">
-    <img src="images/img7.jpeg.jpeg">
-    <img src="images/img8.jpeg.jpeg">
-    <img src="images/img9.jpeg.jpeg">
-  </div>
-  <p class="quote">You + Me = ❤️ Forever!</p>
+<div class="button-container fade-in">
+  <button class="button" onclick="showYes()">Yes ❤️</button>
+  <button class="button" onclick="showNo()">No 😢</button>
+  <button class="button" onclick="toggleMusic()">🔊 Music</button>
 </div>
 
-<div id="noPage">
+<div id="yesPage" class="fade-in">
+  <h2 class="fade-in">Yay! ❤️</h2>
+
+  <div class="gallery">
+    <img src="images/img1.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img2.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="You make my heart smile every day! 💖"></p>
+
+  <div class="gallery">
+    <img src="images/img3.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img4.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="Life is better with you by my side! 🌸"></p>
+
+  <div class="gallery">
+    <img src="images/img5.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img6.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="Every moment with you is magical ✨"></p>
+
+  <div class="gallery">
+    <img src="images/img7.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img8.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img9.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="You + Me = ❤️ Forever!"></p>
+</div>
+
+<div id="noPage" class="fade-in">
   <h2>Oh 😢 maybe next time!</h2>
 </div>
 
-<!-- Background Music -->
+<!-- Music -->
 <audio id="bgMusic" loop>
   <source src="images/love-music.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
+
+<!-- Lightbox for image popup -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
 
 <script src="script.js"></script>
 </body>
