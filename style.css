@@ -1,138 +1,43 @@
-/* ---------- Body & Background ---------- */
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  background-image: url('images/background.jpeg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  position: relative;
-  overflow-x: hidden;
-}
+<div id="yesPage" class="fade-in" style="display:none;">
+  <h2 class="fade-in">Yay! ❤️</h2>
 
-body::before {
-  content:'';
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,182,193,0.15); /* dreamy overlay */
-  top:0; left:0;
-  pointer-events:none;
-}
+  <div class="gallery">
+    <img src="images/img1.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img2.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="You make my heart smile every day! 💖"></p>
 
-/* Fade-in effect */
-.fade-in {
-  animation: fadeIn 2s ease forwards;
-  opacity: 0;
-}
-@keyframes fadeIn { to { opacity: 1; } }
+  <div class="gallery">
+    <img src="images/img3.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img4.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="Life is better with you by my side! 🌸"></p>
 
-/* Headings */
-h1, h2 {
-  color: #fff0f5;
-  text-shadow: 2px 2px 12px #ff69b4;
-  font-weight: bold;
-  margin: 10px 0;
-}
+  <div class="gallery">
+    <img src="images/img5.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img6.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="Every moment with you is magical ✨"></p>
 
-/* Buttons */
-.button-container { margin: 20px 0; }
-.button {
-  padding: 15px 30px;
-  font-size: 20px;
-  margin: 10px;
-  cursor: pointer;
-  border: none;
-  border-radius: 15px;
-  background: linear-gradient(45deg, #ff69b4, #ff1493);
-  color: white;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+  <div class="gallery">
+    <img src="images/img7.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img8.jpeg.jpeg" onclick="openLightbox(this)">
+    <img src="images/img9.jpeg.jpeg" onclick="openLightbox(this)">
+  </div>
+  <p class="quote" data-text="You + Me = ❤️ Forever!"></p>
 
-.button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #fff;
-}
-
-/* Gallery grid */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.5s, filter 0.5s;
-}
-
-.gallery img:hover {
-  transform: scale(1.08) translateY(-5px);
-  filter: brightness(1.2);
-}
-
-/* Quotes typing effect */
-.quote {
-  font-size: 1.5em;
-  color: black;
-  font-weight: bold;
-  margin: 30px 0;
-  text-align: center;
-  min-height: 40px;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: .15em solid black;
-}
-
-/* Pages */
-#yesPage, #noPage { display: none; }
-
-/* Floating hearts */
-.heart {
-  position: fixed;
-  font-size: 24px;
-  color: #ff69b4;
-  animation: float 5s linear infinite;
-  pointer-events: none;
-  z-index: 1000;
-}
-
-@keyframes float {
-  0% { transform: translateY(100vh) rotate(0deg); opacity:1; }
-  100% { transform: translateY(-10vh) rotate(360deg); opacity:0; }
-}
-
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  top: -10px;
-  opacity: 0.8;
-  z-index: 9999;
-  border-radius:50%;
-}
-
-/* Lightbox popup */
-#lightbox {
-  display: none;
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.8);
-  justify-content:center;
-  align-items:center;
-  z-index:10000;
-}
-
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 15px;
-}
+  <!-- 3rd Slide: Vintage Love Letter -->
+  <div id="slide3" class="fade-in" style="display:none;">
+    <div class="vintage-letter">
+      <h2>To My Beloved ❤️</h2>
+      <p>
+        My dearest, <br><br>
+        Every moment with you feels like a dream. <br>
+        Your smile lights up my world, and your love is my greatest treasure. <br><br>
+        Forever yours, <br>
+        <strong>– Parisha 💌</strong>
+      </p>
+      <img src="images/seal.png" alt="Love Seal" class="seal">
+    </div>
+  </div>
+</div>
