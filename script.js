@@ -1,4 +1,10 @@
 let musicPlayed = false;
+// Play music on first click anywhere on page
+document.body.addEventListener('click', function playOnce() {
+  const music = document.getElementById('bgMusic');
+  music.play().catch(()=>console.log("Autoplay blocked"));
+  document.body.removeEventListener('click', playOnce); // remove listener after first click
+});
 
 // Show Yes Page
 function showYes() {
